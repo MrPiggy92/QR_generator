@@ -8,9 +8,9 @@ import data
 import error
 import structure
 import placement
-#import masks
+import masks
 #import formatting
-#import render
+import render
 
 #-- FUNCTIONS --#
 def generate_QR(data_string):
@@ -19,7 +19,9 @@ def generate_QR(data_string):
     #return dec_error_string
     full_string = structure.structure(binary_data_string, dec_error_string)
     layout = placement.place(full_string)
-    return layout
+    masked = masks.mask(layout)
+    render.render(masked)
+    return masked
     #return binary_error_string
 
 #-- MAIN --#
